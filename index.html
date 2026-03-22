@@ -90,8 +90,20 @@
     letter-spacing: 0.2em;
     color: var(--muted);
     text-transform: uppercase;
-    margin-bottom: 1.6rem;
+    margin-bottom: 1.4rem;
     animation: fadeUp 0.6s 0.08s ease both;
+    opacity: 0;
+  }
+
+  /* "i'm" label */
+  .im {
+    font-family: 'DM Serif Display', serif;
+    font-style: italic;
+    font-size: clamp(0.95rem, 2.5vw, 1.3rem);
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    margin-bottom: 0.2rem;
+    animation: fadeUp 0.6s 0.13s ease both;
     opacity: 0;
   }
 
@@ -101,8 +113,8 @@
     font-weight: 400;
     line-height: 1;
     letter-spacing: -0.03em;
-    margin-bottom: 0.4rem;
-    animation: fadeUp 0.6s 0.14s ease both;
+    margin-bottom: 0.3rem;
+    animation: fadeUp 0.6s 0.18s ease both;
     opacity: 0;
     color: var(--text);
   }
@@ -114,8 +126,8 @@
     font-style: italic;
     color: var(--red);
     letter-spacing: -0.02em;
-    margin-bottom: 2rem;
-    animation: fadeUp 0.6s 0.2s ease both;
+    margin-bottom: 1.8rem;
+    animation: fadeUp 0.6s 0.22s ease both;
     opacity: 0;
   }
 
@@ -134,11 +146,14 @@
     font-size: 0.68rem;
     letter-spacing: 0.04em;
     color: var(--muted);
-    animation: fadeUp 0.6s 0.26s ease both;
+    animation: fadeUp 0.6s 0.28s ease both;
     opacity: 0;
     line-height: 1.7;
     text-align: center;
+    text-decoration: none;
+    transition: border-color 0.2s;
   }
+  .chai-badge:hover { border-color: #f97316; }
   .chai-top {
     width: 100%;
     display: flex;
@@ -156,7 +171,7 @@
     width: 100%;
     height: 1px;
     background: var(--border);
-    margin: 0.4rem 0;
+    margin: 0.3rem 0;
   }
   .chai-bottom {
     width: 100%;
@@ -166,25 +181,12 @@
     gap: 0.3rem;
     flex-wrap: wrap;
   }
-  .chai-badge a {
+  .chai-bottom a {
     color: #9b98b8;
     text-decoration: none;
     transition: color 0.2s;
   }
-  .chai-badge a:hover { color: var(--text); }
-
-  h4 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(1rem, 3.5vw, 2rem);
-    font-weight: 400;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-    margin-bottom: 1.8rem;
-    color: #3a3852;
-    animation: fadeUp 0.6s 0.26s ease both;
-    opacity: 0;
-  }
-  h4 em { font-style: italic; color: var(--red); opacity: 0.7; }
+  .chai-bottom a:hover { color: var(--text); }
 
   .bio {
     font-size: 0.8rem;
@@ -192,7 +194,7 @@
     color: var(--muted);
     letter-spacing: 0.02em;
     margin-bottom: 2.8rem;
-    animation: fadeUp 0.6s 0.32s ease both;
+    animation: fadeUp 0.6s 0.34s ease both;
     opacity: 0;
   }
   .bio strong { color: #9b98b8; font-weight: 400; }
@@ -210,7 +212,7 @@
     font-size: 0.73rem;
     letter-spacing: 0.04em;
     color: var(--muted);
-    animation: fadeUp 0.6s 0.38s ease both;
+    animation: fadeUp 0.6s 0.40s ease both;
     opacity: 0;
     text-decoration: none;
     transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
@@ -235,7 +237,7 @@
     align-items: center;
     gap: 0.65rem;
     margin-bottom: 2.8rem;
-    animation: fadeUp 0.6s 0.44s ease both;
+    animation: fadeUp 0.6s 0.46s ease both;
     opacity: 0;
   }
   .dot {
@@ -262,7 +264,7 @@
     flex-wrap: wrap;
     gap: 0.9rem;
     justify-content: center;
-    animation: fadeUp 0.6s 0.5s ease both;
+    animation: fadeUp 0.6s 0.52s ease both;
     opacity: 0;
   }
   .soc {
@@ -281,6 +283,19 @@
   }
   .soc svg { fill: var(--muted); transition: fill 0.2s; }
   .soc:hover svg { fill: var(--text); }
+
+  h4 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1rem, 3.5vw, 2rem);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-block: 1.8rem;
+    color: #3a3852;
+    animation: fadeUp 0.6s 0.58s ease both;
+    opacity: 0;
+  }
+  h4 em { font-style: italic; color: var(--red); opacity: 0.7; }
 
   @keyframes fadeUp {
     from { opacity:0; transform:translateY(14px); }
@@ -323,6 +338,7 @@
 
   <p class="handle">@subhrangsu_dev</p>
 
+  <p class="im">i'm</p>
   <div class="big-name">Subhrangsu</div>
   <div class="big-name-last">Bera</div>
 
@@ -363,8 +379,10 @@
     </a>
   </div>
 
-<h4>Something <em>big</em> is coming.</h4>
+  <h4>Something <em>big</em> is coming.</h4>
+
 </div>
+
 <p class="footer">Subhrangsu Bera © 2026</p>
 
 </body>
