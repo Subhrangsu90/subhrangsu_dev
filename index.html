@@ -18,20 +18,22 @@
     --dim: #2a2838;
   }
 
+  html, body {
+    width: 100%;
+    min-height: 100vh;
+  }
+
   body {
     background: var(--dark);
     color: var(--text);
     font-family: 'DM Mono', monospace;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
     position: relative;
   }
 
-  /* subtle grid */
   .grid {
     position: fixed; inset: 0;
     background-image:
@@ -42,7 +44,6 @@
     z-index: 0;
   }
 
-  /* red ambient glow */
   .glow {
     position: fixed;
     width: 560px; height: 560px;
@@ -59,31 +60,19 @@
     50%      { transform: translate(-50%,-50%) scale(1.18); opacity:1; }
   }
 
-  /* ── MARK ── */
-  /*
-    Abstract mark concept:
-    "Subhrangsu" = radiating light/sun
-    Frontend dev = code brackets < >
-    Combined: a stylised sun made of angled code-ray strokes
-    forming an "S" curl at the centre — like a rising arc
-    with radiating lines, all in angular geometry.
-  */
   .mark {
     margin-bottom: 2rem;
     animation: fadeUp 0.7s ease both;
   }
   .mark svg {
-    width: 64px; height: 64px;
-    filter: drop-shadow(0 0 18px rgba(221,0,49,0.45));
-    animation: rotateMark 20s linear infinite;
+    width: 60px; height: 60px;
+    animation: glowPulse 4s ease-in-out infinite;
   }
-  @keyframes rotateMark {
-    from { filter: drop-shadow(0 0 14px rgba(221,0,49,0.35)); }
-    50%  { filter: drop-shadow(0 0 26px rgba(221,0,49,0.65)); }
-    to   { filter: drop-shadow(0 0 14px rgba(221,0,49,0.35)); }
+  @keyframes glowPulse {
+    0%,100% { filter: drop-shadow(0 0 12px rgba(221,0,49,0.35)); }
+    50%      { filter: drop-shadow(0 0 28px rgba(221,0,49,0.65)); }
   }
 
-  /* ── MAIN ── */
   .center {
     position: relative;
     z-index: 1;
@@ -91,8 +80,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2rem 2rem 4rem;
-    max-width: 600px;
+    padding: 5rem 1.5rem 6rem;
+    max-width: 620px;
     width: 100%;
   }
 
@@ -101,22 +90,101 @@
     letter-spacing: 0.2em;
     color: var(--muted);
     text-transform: uppercase;
-    margin-bottom: 1.8rem;
-    animation: fadeUp 0.6s 0.1s ease both;
+    margin-bottom: 1.6rem;
+    animation: fadeUp 0.6s 0.08s ease both;
     opacity: 0;
   }
 
-  h1 {
+  .big-name {
     font-family: 'DM Serif Display', serif;
-    font-size: clamp(2.6rem, 7vw, 4.8rem);
+    font-size: clamp(2rem, 7vw, 4.2rem);
     font-weight: 400;
-    line-height: 1.06;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.4rem;
+    animation: fadeUp 0.6s 0.14s ease both;
+    opacity: 0;
+    color: var(--text);
+  }
+
+  .big-name-last {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.4rem, 4.5vw, 2.6rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--red);
     letter-spacing: -0.02em;
-    margin-bottom: 1.8rem;
-    animation: fadeUp 0.6s 0.18s ease both;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.6s 0.2s ease both;
     opacity: 0;
   }
-  h1 em { font-style: italic; color: var(--red); }
+
+  /* chaicode badge */
+  .chai-badge {
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem;
+    border: 1px solid #1e1e2e;
+    border-radius: 10px;
+    padding: 0.65rem 1.1rem;
+    margin-bottom: 2rem;
+    background: var(--card);
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    animation: fadeUp 0.6s 0.26s ease both;
+    opacity: 0;
+    line-height: 1.7;
+    text-align: center;
+  }
+  .chai-top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    margin-bottom: 0.2rem;
+  }
+  .chai-name {
+    color: #f97316;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+  }
+  .chai-divider {
+    width: 100%;
+    height: 1px;
+    background: var(--border);
+    margin: 0.4rem 0;
+  }
+  .chai-bottom {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    flex-wrap: wrap;
+  }
+  .chai-badge a {
+    color: #9b98b8;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .chai-badge a:hover { color: var(--text); }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.4rem, 4vw, 2.4rem);
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin-bottom: 1.8rem;
+    color: #3a3852;
+    animation: fadeUp 0.6s 0.26s ease both;
+    opacity: 0;
+  }
+  h1 em { font-style: italic; color: var(--red); opacity: 0.7; }
 
   .bio {
     font-size: 0.8rem;
@@ -124,12 +192,12 @@
     color: var(--muted);
     letter-spacing: 0.02em;
     margin-bottom: 2.8rem;
-    animation: fadeUp 0.6s 0.26s ease both;
+    animation: fadeUp 0.6s 0.32s ease both;
     opacity: 0;
   }
   .bio strong { color: #9b98b8; font-weight: 400; }
 
-  /* package chip */
+  /* npm chip */
   .package {
     display: inline-flex;
     align-items: center;
@@ -142,7 +210,7 @@
     font-size: 0.73rem;
     letter-spacing: 0.04em;
     color: var(--muted);
-    animation: fadeUp 0.6s 0.34s ease both;
+    animation: fadeUp 0.6s 0.38s ease both;
     opacity: 0;
     text-decoration: none;
     transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
@@ -162,13 +230,12 @@
     padding: 0.15rem 0.4rem;
   }
 
-  /* status */
   .status {
     display: flex;
     align-items: center;
     gap: 0.65rem;
     margin-bottom: 2.8rem;
-    animation: fadeUp 0.6s 0.42s ease both;
+    animation: fadeUp 0.6s 0.44s ease both;
     opacity: 0;
   }
   .dot {
@@ -190,15 +257,16 @@
     text-transform: uppercase;
   }
 
-  /* socials */
   .socials {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.9rem;
+    justify-content: center;
     animation: fadeUp 0.6s 0.5s ease both;
     opacity: 0;
   }
   .soc {
-    width: 40px; height: 40px;
+    width: 44px; height: 44px;
     border: 1px solid var(--border);
     border-radius: 10px;
     display: flex; align-items: center; justify-content: center;
@@ -220,8 +288,8 @@
   }
 
   .footer {
-    position: fixed; bottom: 1.6rem;
-    font-size: 0.65rem;
+    position: fixed; bottom: 1.4rem;
+    font-size: 0.62rem;
     letter-spacing: 0.08em;
     color: #1e1c2a;
     z-index: 1;
@@ -235,57 +303,40 @@
 
 <div class="center">
 
-  <!--
-    ABSTRACT MARK:
-    Outer ring = the "Subhrangsu" radiance / sun concept
-    Inner angled "S" arc = the initial of the name
-    Code chevrons < > = frontend developer identity
-    Geometry = Angular-influenced sharp angles
-    All unified in one mark without using any brand logo
-  -->
   <div class="mark">
     <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <!-- outer ring segments (8 arcs like sun rays, angular style) -->
       <circle cx="40" cy="40" r="36" stroke="#dd0031" stroke-width="1" stroke-dasharray="4 8" stroke-linecap="round" opacity="0.4"/>
       <circle cx="40" cy="40" r="28" stroke="#dd0031" stroke-width="0.5" opacity="0.15"/>
-
-      <!-- radiating lines (sun / light rays) -->
       <line x1="40" y1="4"  x2="40" y2="13" stroke="#dd0031" stroke-width="2" stroke-linecap="round"/>
       <line x1="40" y1="67" x2="40" y2="76" stroke="#dd0031" stroke-width="2" stroke-linecap="round"/>
       <line x1="4"  y1="40" x2="13" y2="40" stroke="#dd0031" stroke-width="2" stroke-linecap="round"/>
       <line x1="67" y1="40" x2="76" y2="40" stroke="#dd0031" stroke-width="2" stroke-linecap="round"/>
-      <!-- diagonals -->
       <line x1="11.7" y1="11.7" x2="18.1" y2="18.1" stroke="#dd0031" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
       <line x1="61.9" y1="61.9" x2="68.3" y2="68.3" stroke="#dd0031" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
       <line x1="68.3" y1="11.7" x2="61.9" y2="18.1" stroke="#dd0031" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
       <line x1="11.7" y1="68.3" x2="18.1" y2="61.9" stroke="#dd0031" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
-
-      <!-- inner "S" as two stacked code-bracket arcs — frontend identity -->
-      <!-- top arc of S — opening chevron style -->
-      <path d="M46 28 C46 22, 34 22, 34 28 C34 34, 46 34, 46 40" 
-            stroke="#dd0031" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-      <!-- bottom arc of S -->
-      <path d="M34 40 C34 46, 46 46, 46 52 C46 58, 34 58, 34 52" 
-            stroke="#dd0031" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-
-      <!-- centre dot -->
+      <path d="M46 28 C46 22, 34 22, 34 28 C34 34, 46 34, 46 40" stroke="#dd0031" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      <path d="M34 40 C34 46, 46 46, 46 52 C46 58, 34 58, 34 52" stroke="#dd0031" stroke-width="2.5" stroke-linecap="round" fill="none"/>
       <circle cx="40" cy="40" r="2.5" fill="#dd0031"/>
     </svg>
   </div>
 
   <p class="handle">@subhrangsu_dev</p>
 
-  <h1>Something <em>big</em><br>is coming.</h1>
+  <div class="big-name">Subhrangsu</div>
+  <div class="big-name-last">Bera</div>
+
+  <h1>Something <em>big</em> is coming.</h1>
 
   <p class="bio">
-    i'm <strong>Subhrangsu</strong> — a frontend developer from Kolkata.<br>
+    a frontend developer from Kolkata.<br>
     i build precise, performant apps with <strong>Angular</strong> and love<br>
     turning complex ideas into clean real-world experiences.
   </p>
 
-  <a class="package" href="https://chaicss.subhrangsu.in" target="_blank">
-    <span class="pkg-label">pkg</span>
-    chaicss.subhrangsu.in &nbsp;→
+  <a class="package" href="https://www.npmjs.com/package/@brewcodex/chai-css" target="_blank">
+    <span class="pkg-label">npm</span>
+    npm i @brewcodex/chai-css &nbsp;→
   </a>
 
   <div class="status">
@@ -294,23 +345,21 @@
   </div>
 
   <div class="socials">
-    <!-- X -->
     <a class="soc" href="https://x.com/subhrangsu_dev" target="_blank" title="X">
       <svg width="16" height="16" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.265 5.638 5.898-5.638zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
     </a>
-    <!-- GitHub -->
     <a class="soc" href="https://github.com/Subhrangsu90" target="_blank" title="GitHub">
       <svg width="17" height="17" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577v-2.165c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
     </a>
-    <!-- Dev.to -->
+    <a class="soc" href="https://www.linkedin.com/in/subhrangsu-bera/" target="_blank" title="LinkedIn">
+      <svg width="17" height="17" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    </a>
     <a class="soc" href="https://dev.to/subhrangsu_dev" target="_blank" title="Dev.to">
       <svg width="17" height="17" viewBox="0 0 24 24"><path d="M7.42 10.05c-.18-.16-.46-.23-.84-.23H6l.02 2.44.04 2.45.56-.02c.41 0 .63-.07.83-.26.24-.24.26-.36.26-2.2 0-1.91-.02-1.96-.29-2.18zM0 4.94v14.12h24V4.94H0zM8.56 15.3c-.44.58-1.06.77-2.53.77H4.71V8.53h1.4c1.67 0 2.16.18 2.6.9.27.43.29.6.32 2.57.05 2.23-.02 2.73-.47 3.3zm5.09-5.47h-2.47v1.77h1.52v1.28l-.72.04-.75.03v1.77l1.22.03 1.2.04v1.28h-1.6c-1.53 0-1.6-.01-1.87-.3l-.3-.28v-3.16c0-3.02.01-3.18.25-3.48.23-.31.25-.31 1.88-.31h1.64v1.29zm4.68 5.45c-.17.43-.64.79-1 .79-.18 0-.45-.15-.67-.39-.32-.32-.45-.63-.82-2.08l-.9-3.39-.45-1.67h.76c.4 0 .75.02.75.05 0 .06 1.16 4.54 1.26 4.83.04.15.32-.7.73-2.3l.66-2.52.74-.04c.4-.02.73 0 .73.04 0 .14-1.67 5.38-1.8 5.68z"/></svg>
     </a>
-    <!-- Hashnode -->
     <a class="soc" href="https://blog.subhrangsu.in" target="_blank" title="Blog">
       <svg width="17" height="17" viewBox="0 0 24 24"><path d="M22.351 8.019l-6.37-6.37a5.63 5.63 0 00-7.962 0l-6.37 6.37a5.63 5.63 0 000 7.962l6.37 6.37a5.63 5.63 0 007.962 0l6.37-6.37a5.63 5.63 0 000-7.962zM12 15.953a3.953 3.953 0 110-7.906 3.953 3.953 0 010 7.906z"/></svg>
     </a>
-    <!-- Email -->
     <a class="soc" href="mailto:subhrangsubera@gmail.com" title="Email">
       <svg width="16" height="16" viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 010 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
     </a>
