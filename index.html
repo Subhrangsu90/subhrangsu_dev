@@ -1,29 +1,52 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Subhrangsu Bera</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='80' height='80' rx='16' fill='%230a0a0f'/><circle cx='40' cy='40' r='36' stroke='%23dd0031' stroke-width='1' stroke-dasharray='4 8' stroke-linecap='round' opacity='0.4'/><line x1='40' y1='4' x2='40' y2='13' stroke='%23dd0031' stroke-width='2' stroke-linecap='round'/><line x1='40' y1='67' x2='40' y2='76' stroke='%23dd0031' stroke-width='2' stroke-linecap='round'/><line x1='4' y1='40' x2='13' y2='40' stroke='%23dd0031' stroke-width='2' stroke-linecap='round'/><line x1='67' y1='40' x2='76' y2='40' stroke='%23dd0031' stroke-width='2' stroke-linecap='round'/><line x1='11.7' y1='11.7' x2='18.1' y2='18.1' stroke='%23dd0031' stroke-width='1.5' stroke-linecap='round' opacity='0.7'/><line x1='61.9' y1='61.9' x2='68.3' y2='68.3' stroke='%23dd0031' stroke-width='1.5' stroke-linecap='round' opacity='0.7'/><line x1='68.3' y1='11.7' x2='61.9' y2='18.1' stroke='%23dd0031' stroke-width='1.5' stroke-linecap='round' opacity='0.7'/><line x1='11.7' y1='68.3' x2='18.1' y2='61.9' stroke='%23dd0031' stroke-width='1.5' stroke-linecap='round' opacity='0.7'/><path d='M46 28 C46 22 34 22 34 28 C34 34 46 34 46 40' stroke='%23dd0031' stroke-width='2.5' stroke-linecap='round'/><path d='M34 40 C34 46 46 46 46 52 C46 58 34 58 34 52' stroke='%23dd0031' stroke-width='2.5' stroke-linecap='round'/><circle cx='40' cy='40' r='2.5' fill='%23dd0031'/></svg>">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='80' height='80' rx='16' fill='%230a0a0f'/><circle cx='40' cy='40' r='36' stroke='%23dd0031' stroke-width='1' stroke-dasharray='4 8' stroke-linecap='round' opacity='0.4'/><line x1='40' y1='4' x2='40' y2='13' stroke='%23dd0031' stroke-width='2' stroke-linecap='round'/><line x1='40' y1='67' x2='40' y2='76' stroke='%23dd0031' stroke-width='2' stroke-linecap='round'/><line x1='4' y1='40' x2='13' y2='40' stroke='%23dd0031' stroke-width='2' stroke-linecap='round'/><line x1='67' y1='40' x2='76' y2='40' stroke='%23dd0031' stroke-width='2' stroke-linecap='round'/><path d='M46 28 C46 22 34 22 34 28 C34 34 46 34 46 40' stroke='%23dd0031' stroke-width='2.5' stroke-linecap='round'/><path d='M34 40 C34 46 46 46 46 52 C46 58 34 58 34 52' stroke='%23dd0031' stroke-width='2.5' stroke-linecap='round'/><circle cx='40' cy='40' r='2.5' fill='%23dd0031'/></svg>">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  :root {
-    --red: #dd0031;
-    --dark: #0a0a0f;
-    --card: #0f0f16;
-    --border: #1a1a26;
-    --text: #e8e6f0;
-    --muted: #55536a;
-    --dim: #2a2838;
-    --green: #7dd3a8;
+
+  /* ── LIGHT — crisp zinc-white, ink black, precise red ── */
+  :root, [data-theme="light"] {
+    --bg:     #ffffff;
+    --card:   #f7f7f8;
+    --border: #e4e4e7;
+    --text:   #09090b;
+    --muted:  #71717a;
+    --dim:    #d4d4d8;
+    --red:    #e8002a;
+    --green:  #16a34a;
+    --grid:   rgba(0,0,0,0.04);
+    --glow:   rgba(232,0,42,0.05);
+    --footer: #a1a1aa;
+    --coming: #a1a1aa;
+  }
+
+  /* ── DARK — deep navy-black, not pure black ── */
+  [data-theme="dark"] {
+    --bg:     #08080d;
+    --card:   #0e0e15;
+    --border: #1c1c28;
+    --text:   #fafaf9;
+    --muted:  #52525b;
+    --dim:    #27272a;
+    --red:    #ff1744;
+    --green:  #4ade80;
+    --grid:   rgba(255,23,68,0.03);
+    --glow:   rgba(255,23,68,0.07);
+    --footer: #27272a;
+    --coming: #3f3f46;
   }
 
   html, body { width: 100%; min-height: 100vh; }
 
   body {
-    background: var(--dark);
+    background: var(--bg);
     color: var(--text);
     font-family: 'DM Mono', monospace;
     display: flex;
@@ -31,36 +54,63 @@
     align-items: center;
     justify-content: center;
     position: relative;
+    transition: background 0.35s, color 0.35s;
   }
 
-  /* grid bg */
+  /* grid */
   .grid {
     position: fixed; inset: 0;
     background-image:
-      linear-gradient(rgba(221,0,49,0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(221,0,49,0.025) 1px, transparent 1px);
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
     background-size: 64px 64px;
     pointer-events: none; z-index: 0;
+    transition: opacity 0.35s;
   }
 
-  /* ambient glow */
+  /* glow */
   .glow {
     position: fixed;
     width: 560px; height: 560px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(221,0,49,0.08) 0%, transparent 70%);
+    background: radial-gradient(circle, var(--glow) 0%, transparent 70%);
     top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%,-50%);
     pointer-events: none;
     animation: breathe 6s ease-in-out infinite;
     z-index: 0;
   }
   @keyframes breathe {
-    0%,100% { transform: translate(-50%,-50%) scale(1); opacity:.6; }
-    50%      { transform: translate(-50%,-50%) scale(1.18); opacity:1; }
+    0%,100% { transform:translate(-50%,-50%) scale(1); opacity:.6; }
+    50%      { transform:translate(-50%,-50%) scale(1.18); opacity:1; }
   }
 
-  /* abstract mark */
+  /* ── TOGGLE BUTTON ── */
+  .theme-toggle {
+    position: fixed;
+    top: 1.4rem; right: 1.4rem;
+    z-index: 100;
+    width: 42px; height: 24px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.3s, border-color 0.3s;
+    display: flex; align-items: center;
+    padding: 3px;
+  }
+  .toggle-thumb {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--red);
+    transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  [data-theme="dark"] .toggle-thumb { transform: translateX(18px); }
+  .toggle-thumb svg { display: block; }
+
+  /* mark */
   .mark {
     margin-bottom: 2rem;
     animation: fadeUp 0.7s ease both;
@@ -70,11 +120,11 @@
     animation: glowPulse 4s ease-in-out infinite;
   }
   @keyframes glowPulse {
-    0%,100% { filter: drop-shadow(0 0 10px rgba(221,0,49,0.3)); }
-    50%      { filter: drop-shadow(0 0 24px rgba(221,0,49,0.6)); }
+    0%,100% { filter: drop-shadow(0 0 10px rgba(221,0,49,0.25)); }
+    50%      { filter: drop-shadow(0 0 22px rgba(221,0,49,0.55)); }
   }
 
-  /* center wrapper */
+  /* center */
   .center {
     position: relative; z-index: 1;
     text-align: center;
@@ -90,6 +140,7 @@
     text-transform: uppercase;
     margin-bottom: 1.4rem;
     animation: fadeUp 0.6s 0.06s ease both; opacity: 0;
+    transition: color 0.3s;
   }
 
   .im {
@@ -99,12 +150,356 @@
     color: var(--muted);
     margin-bottom: 0.15rem;
     animation: fadeUp 0.6s 0.12s ease both; opacity: 0;
+    transition: color 0.3s;
   }
 
   .big-name {
     font-family: 'DM Serif Display', serif;
     font-size: clamp(2rem, 7vw, 4.2rem);
     font-weight: 400; line-height: 1;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.25rem;
+    color: var(--text);
+    animation: fadeUp 0.6s 0.17s ease both; opacity: 0;
+    transition: color 0.3s;
+  }
+
+  .big-name-last {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.3rem, 4.5vw, 2.5rem);
+    font-weight: 400; font-style: italic;
+    color: var(--red);
+    letter-spacing: -0.02em;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.6s 0.22s ease both; opacity: 0;
+  }
+
+  /* status pill */
+  .status-pill {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.4rem 0.95rem;
+    margin-bottom: 2.2rem;
+    background: var(--card);
+    font-size: 0.68rem; letter-spacing: 0.06em;
+    color: var(--muted);
+    animation: fadeUp 0.6s 0.28s ease both; opacity: 0;
+    transition: background 0.3s, border-color 0.3s, color 0.3s;
+  }
+  .dot-green {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 6px var(--green);
+    animation: blink 2.5s ease-in-out infinite; flex-shrink: 0;
+    transition: background 0.3s;
+  }
+  .status-pill strong { color: var(--green); font-weight: 400; transition: color 0.3s; }
+
+  /* bio */
+  .bio {
+    font-size: 0.82rem; line-height: 2;
+    color: var(--muted); letter-spacing: 0.02em;
+    margin-bottom: 2.4rem;
+    animation: fadeUp 0.6s 0.34s ease both; opacity: 0;
+    transition: color 0.3s;
+  }
+  .bio .highlight { color: var(--text); opacity: 0.6; transition: color 0.3s; }
+  .bio .accent    { color: var(--red); opacity: 0.85; }
+
+  /* traits */
+  .traits {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 2.4rem;
+    animation: fadeUp 0.6s 0.4s ease both; opacity: 0;
+  }
+  .trait {
+    font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase;
+    border-radius: 999px;
+    padding: 0.32rem 0.85rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-weight: 400;
+    transition: border-color 0.2s, color 0.2s, background 0.3s;
+  }
+  .trait:hover { border-color: var(--red); color: var(--text); }
+
+  /* npm chip */
+  .package {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.6rem 1.1rem;
+    margin-bottom: 2.6rem;
+    background: var(--card);
+    font-size: 0.72rem; letter-spacing: 0.04em;
+    color: var(--muted);
+    animation: fadeUp 0.6s 0.46s ease both; opacity: 0;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s, box-shadow 0.2s, background 0.3s;
+  }
+  .package:hover {
+    border-color: var(--red); color: var(--text);
+    box-shadow: 0 0 16px rgba(221,0,49,0.12);
+  }
+  .pkg-label {
+    font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--red);
+    border: 1px solid rgba(221,0,49,0.3);
+    border-radius: 4px; padding: 0.12rem 0.4rem;
+  }
+
+  /* coming */
+  .coming {
+    display: flex; align-items: center; gap: 0.6rem;
+    margin-bottom: 2.6rem;
+    animation: fadeUp 0.6s 0.52s ease both; opacity: 0;
+  }
+  .dot-red {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--red); box-shadow: 0 0 8px var(--red);
+    animation: blink 2s ease-in-out infinite; flex-shrink: 0;
+  }
+  .coming-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(0.95rem, 3vw, 1.5rem);
+    font-weight: 400; color: var(--coming);
+    letter-spacing: -0.01em;
+    transition: color 0.3s;
+  }
+  .coming-text em { font-style: italic; color: var(--red); opacity: 0.75; }
+
+  @keyframes blink {
+    0%,100% { opacity:1; } 50% { opacity:0.15; }
+  }
+
+  /* socials */
+  .socials {
+    display: flex; flex-wrap: wrap; gap: 0.8rem;
+    justify-content: center;
+    animation: fadeUp 0.6s 0.58s ease both; opacity: 0;
+  }
+  .soc {
+    width: 44px; height: 44px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none;
+    background: var(--card);
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s, background 0.3s;
+  }
+  .soc:hover {
+    border-color: var(--red); transform: translateY(-3px);
+    box-shadow: 0 4px 16px rgba(221,0,49,0.15);
+  }
+  .soc svg { fill: var(--muted); transition: fill 0.2s; }
+  .soc:hover svg { fill: var(--text); }
+
+  @keyframes fadeUp {
+    from { opacity:0; transform:translateY(14px); }
+    to   { opacity:1; transform:translateY(0); }
+  }
+
+  .footer {
+    position: fixed; bottom: 1.4rem;
+    font-size: 0.6rem; letter-spacing: 0.08em;
+    color: var(--footer); z-index: 1;
+    transition: color 0.3s;
+  }
+  /* socials */
+  .socials {
+    display: flex; flex-wrap: wrap; gap: 0.8rem;
+    justify-content: center;
+    animation: fadeUp 0.6s 0.58s ease both; opacity: 0;
+  }
+  .soc {
+    width: 44px; height: 44px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none;
+    background: var(--card);
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s, background 0.3s;
+    position: relative;
+  }
+  .soc:hover {
+    border-color: var(--red); transform: translateY(-3px);
+    box-shadow: 0 4px 16px rgba(221,0,49,0.15);
+  }
+  .soc svg { fill: var(--muted); transition: fill 0.2s; }
+  .soc:hover svg { fill: var(--text); }
+ 
+  /* tooltip */
+  .soc::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    background: var(--text);
+    color: var(--bg);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.65rem;
+    border-radius: 6px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+  }
+  /* arrow */
+  .soc::before {
+    content: '';
+    position: absolute;
+    bottom: calc(100% + 3px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+    border: 4px solid transparent;
+    border-top-color: var(--text);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+  }
+  .soc:hover::after,
+  .soc:hover::before {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<div class="grid"></div>
+<div class="glow"></div>
+
+<!-- theme toggle -->
+<button class="theme-toggle" onclick="toggleTheme()" title="Toggle theme" aria-label="Toggle theme">
+  <div class="toggle-thumb" id="thumb">
+    <!-- sun icon (light mode) -->
+    <svg id="icon-sun" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round">
+      <circle cx="12" cy="12" r="4"/>
+      <line x1="12" y1="2"  x2="12" y2="5"/>
+      <line x1="12" y1="19" x2="12" y2="22"/>
+      <line x1="2"  y1="12" x2="5"  y2="12"/>
+      <line x1="19" y1="12" x2="22" y2="12"/>
+      <line x1="4.93"  y1="4.93"  x2="7.05"  y2="7.05"/>
+      <line x1="16.95" y1="16.95" x2="19.07" y2="19.07"/>
+      <line x1="19.07" y1="4.93"  x2="16.95" y2="7.05"/>
+      <line x1="4.93"  y1="19.07" x2="7.05"  y2="16.95"/>
+    </svg>
+    <!-- moon icon (dark mode) -->
+    <svg id="icon-moon" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" style="display:none">
+      <path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z"/>
+    </svg>
+  </div>
+</button>
+
+<div class="center">
+
+  <div class="mark">
+    <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="40" cy="40" r="36" stroke="#dd0031" stroke-width="1" stroke-dasharray="4 8" stroke-linecap="round" opacity="0.4"/>
+      <circle cx="40" cy="40" r="28" stroke="#dd0031" stroke-width="0.5" opacity="0.15"/>
+      <line x1="40" y1="4"  x2="40" y2="13" stroke="#dd0031" stroke-width="2" stroke-linecap="round"/>
+      <line x1="40" y1="67" x2="40" y2="76" stroke="#dd0031" stroke-width="2" stroke-linecap="round"/>
+      <line x1="4"  y1="40" x2="13" y2="40" stroke="#dd0031" stroke-width="2" stroke-linecap="round"/>
+      <line x1="67" y1="40" x2="76" y2="40" stroke="#dd0031" stroke-width="2" stroke-linecap="round"/>
+      <line x1="11.7" y1="11.7" x2="18.1" y2="18.1" stroke="#dd0031" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+      <line x1="61.9" y1="61.9" x2="68.3" y2="68.3" stroke="#dd0031" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+      <line x1="68.3" y1="11.7" x2="61.9" y2="18.1" stroke="#dd0031" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+      <line x1="11.7" y1="68.3" x2="18.1" y2="61.9" stroke="#dd0031" stroke-width="1.5" stroke-linecap="round" opacity="0.7"/>
+      <path d="M46 28 C46 22, 34 22, 34 28 C34 34, 46 34, 46 40" stroke="#dd0031" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      <path d="M34 40 C34 46, 46 46, 46 52 C46 58, 34 58, 34 52" stroke="#dd0031" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+      <circle cx="40" cy="40" r="2.5" fill="#dd0031"/>
+    </svg>
+  </div>
+
+  <p class="handle">@subhrangsu_dev</p>
+
+  <p class="im">i'm</p>
+  <div class="big-name">Subhrangsu</div>
+  <div class="big-name-last">Bera</div>
+
+  <div class="status-pill">
+    <span class="dot-green"></span>
+    levelling up → <strong>Full Stack</strong>
+  </div>
+
+  <p class="bio">
+    i obsess over <span class="highlight">pixels, performance & clean code.</span><br>
+    by day — crafting <span class="accent">Angular</span> apps that actually scale.<br>
+    by night — learning the full stack, one commit at a time.
+  </p>
+
+  <div class="traits">
+    <span class="trait">Angular</span>
+    <span class="trait">TypeScript</span>
+    <span class="trait">RxJS</span>
+    <span class="trait">Node.js ↗</span>
+    <span class="trait">Micro Frontends</span>
+    <span class="trait">Open Source</span>
+  </div>
+
+  <a class="package" href="https://www.npmjs.com/package/@brewcodex/chai-css" target="_blank">
+    <span class="pkg-label">npm</span>
+    npm i @brewcodex/chai-css &nbsp;→
+  </a>
+
+  <div class="coming">
+    <span class="dot-red"></span>
+    <span class="coming-text">something <em>big</em> is being built.</span>
+  </div>
+
+  <div class="socials">
+    <a class="soc" href="https://x.com/subhrangsu_dev" target="_blank" data-tip="X / Twitter">
+      <svg width="16" height="16" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.747l7.73-8.835L1.254 2.25H8.08l4.265 5.638 5.898-5.638zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+    <a class="soc" href="https://github.com/Subhrangsu90" target="_blank" data-tip="GitHub">
+      <svg width="17" height="17" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577v-2.165c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.84 1.237 1.84 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.63-5.37-12-12-12z"/></svg>
+    </a>
+    <a class="soc" href="https://www.linkedin.com/in/subhrangsu-bera/" target="_blank" data-tip="LinkedIn">
+      <svg width="17" height="17" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    </a>
+    <a class="soc" href="https://dev.to/subhrangsu_dev" target="_blank" data-tip="Dev.to">
+      <svg width="17" height="17" viewBox="0 0 24 24"><path d="M7.42 10.05c-.18-.16-.46-.23-.84-.23H6l.02 2.44.04 2.45.56-.02c.41 0 .63-.07.83-.26.24-.24.26-.36.26-2.2 0-1.91-.02-1.96-.29-2.18zM0 4.94v14.12h24V4.94H0zM8.56 15.3c-.44.58-1.06.77-2.53.77H4.71V8.53h1.4c1.67 0 2.16.18 2.6.9.27.43.29.6.32 2.57.05 2.23-.02 2.73-.47 3.3zm5.09-5.47h-2.47v1.77h1.52v1.28l-.72.04-.75.03v1.77l1.22.03 1.2.04v1.28h-1.6c-1.53 0-1.6-.01-1.87-.3l-.3-.28v-3.16c0-3.02.01-3.18.25-3.48.23-.31.25-.31 1.88-.31h1.64v1.29zm4.68 5.45c-.17.43-.64.79-1 .79-.18 0-.45-.15-.67-.39-.32-.32-.45-.63-.82-2.08l-.9-3.39-.45-1.67h.76c.4 0 .75.02.75.05 0 .06 1.16 4.54 1.26 4.83.04.15.32-.7.73-2.3l.66-2.52.74-.04c.4-.02.73 0 .73.04 0 .14-1.67 5.38-1.8 5.68z"/></svg>
+    </a>
+    <a class="soc" href="https://blog.subhrangsu.in" target="_blank" data-tip="Hashnode Blog">
+      <svg width="17" height="17" viewBox="0 0 24 24"><path d="M22.351 8.019l-6.37-6.37a5.63 5.63 0 00-7.962 0l-6.37 6.37a5.63 5.63 0 000 7.962l6.37 6.37a5.63 5.63 0 007.962 0l6.37-6.37a5.63 5.63 0 000-7.962zM12 15.953a3.953 3.953 0 110-7.906 3.953 3.953 0 010 7.906z"/></svg>
+    </a>
+    <a class="soc" href="mailto:subhrangsubera@gmail.com" data-tip="Email Me">
+      <svg width="16" height="16" viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 010 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
+    </a>
+  </div>
+
+</div>
+
+<script>
+  var html     = document.documentElement;
+  var iconSun  = document.getElementById('icon-sun');
+  var iconMoon = document.getElementById('icon-moon');
+
+  function applyTheme(theme) {
+    html.setAttribute('data-theme', theme);
+    if (iconSun && iconMoon) {
+      iconSun.style.display  = theme === 'dark' ? 'none'  : 'block';
+      iconMoon.style.display = theme === 'dark' ? 'block' : 'none';
+    }
+    try { localStorage.setItem('theme', theme); } catch(e) {}
+  }
+
+  function toggleTheme() {
+    applyTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  }
+
+  // init
+  applyTheme((function() {
+    try { return localStorage.getItem('theme') || 'light'; } catch(e) { return 'light'; }
+  })());
+</script>
     letter-spacing: -0.03em;
     margin-bottom: 0.25rem;
     color: var(--text);
