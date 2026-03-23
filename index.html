@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Subhrangsu Bera</title>
- <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='80' height='80' rx='16' fill='%230a0a0f'/><circle cx='40' cy='40' r='36' stroke='%23dd0031' stroke-width='1' stroke-dasharray='4 8' stroke-linecap='round' opacity='0.4'/><line x1='40' y1='4' x2='40' y2='13' stroke='%23dd0031' stroke-width='2' stroke-linecap='round'/><line x1='40' y1='67' x2='40' y2='76' stroke='%23dd0031' stroke-width='2' stroke-linecap='round'/><line x1='4' y1='40' x2='13' y2='40' stroke='%23dd0031' stroke-width='2' stroke-linecap='round'/><line x1='67' y1='40' x2='76' y2='40' stroke='%23dd0031' stroke-width='2' stroke-linecap='round'/><line x1='11.7' y1='11.7' x2='18.1' y2='18.1' stroke='%23dd0031' stroke-width='1.5' stroke-linecap='round' opacity='0.7'/><line x1='61.9' y1='61.9' x2='68.3' y2='68.3' stroke='%23dd0031' stroke-width='1.5' stroke-linecap='round' opacity='0.7'/><line x1='68.3' y1='11.7' x2='61.9' y2='18.1' stroke='%23dd0031' stroke-width='1.5' stroke-linecap='round' opacity='0.7'/><line x1='11.7' y1='68.3' x2='18.1' y2='61.9' stroke='%23dd0031' stroke-width='1.5' stroke-linecap='round' opacity='0.7'/><path d='M46 28 C46 22 34 22 34 28 C34 34 46 34 46 40' stroke='%23dd0031' stroke-width='2.5' stroke-linecap='round'/><path d='M34 40 C34 46 46 46 46 52 C46 58 34 58 34 52' stroke='%23dd0031' stroke-width='2.5' stroke-linecap='round'/><circle cx='40' cy='40' r='2.5' fill='%23dd0031'/></svg>">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg viewBox='0 0 80 80' fill='none' xmlns='http://www.w3.org/2000/svg'><rect width='80' height='80' rx='16' fill='%230a0a0f'/><circle cx='40' cy='40' r='36' stroke='%23dd0031' stroke-width='1' stroke-dasharray='4 8' stroke-linecap='round' opacity='0.4'/><line x1='40' y1='4' x2='40' y2='13' stroke='%23dd0031' stroke-width='2' stroke-linecap='round'/><line x1='40' y1='67' x2='40' y2='76' stroke='%23dd0031' stroke-width='2' stroke-linecap='round'/><line x1='4' y1='40' x2='13' y2='40' stroke='%23dd0031' stroke-width='2' stroke-linecap='round'/><line x1='67' y1='40' x2='76' y2='40' stroke='%23dd0031' stroke-width='2' stroke-linecap='round'/><line x1='11.7' y1='11.7' x2='18.1' y2='18.1' stroke='%23dd0031' stroke-width='1.5' stroke-linecap='round' opacity='0.7'/><line x1='61.9' y1='61.9' x2='68.3' y2='68.3' stroke='%23dd0031' stroke-width='1.5' stroke-linecap='round' opacity='0.7'/><line x1='68.3' y1='11.7' x2='61.9' y2='18.1' stroke='%23dd0031' stroke-width='1.5' stroke-linecap='round' opacity='0.7'/><line x1='11.7' y1='68.3' x2='18.1' y2='61.9' stroke='%23dd0031' stroke-width='1.5' stroke-linecap='round' opacity='0.7'/><path d='M46 28 C46 22 34 22 34 28 C34 34 46 34 46 40' stroke='%23dd0031' stroke-width='2.5' stroke-linecap='round'/><path d='M34 40 C34 46 46 46 46 52 C46 58 34 58 34 52' stroke='%23dd0031' stroke-width='2.5' stroke-linecap='round'/><circle cx='40' cy='40' r='2.5' fill='%23dd0031'/></svg>">
 <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -17,12 +17,10 @@
     --text: #e8e6f0;
     --muted: #55536a;
     --dim: #2a2838;
+    --green: #7dd3a8;
   }
 
-  html, body {
-    width: 100%;
-    min-height: 100vh;
-  }
+  html, body { width: 100%; min-height: 100vh; }
 
   body {
     background: var(--dark);
@@ -35,16 +33,17 @@
     position: relative;
   }
 
+  /* grid bg */
   .grid {
     position: fixed; inset: 0;
     background-image:
       linear-gradient(rgba(221,0,49,0.025) 1px, transparent 1px),
       linear-gradient(90deg, rgba(221,0,49,0.025) 1px, transparent 1px);
     background-size: 64px 64px;
-    pointer-events: none;
-    z-index: 0;
+    pointer-events: none; z-index: 0;
   }
 
+  /* ambient glow */
   .glow {
     position: fixed;
     width: 560px; height: 560px;
@@ -61,144 +60,125 @@
     50%      { transform: translate(-50%,-50%) scale(1.18); opacity:1; }
   }
 
+  /* abstract mark */
   .mark {
     margin-bottom: 2rem;
     animation: fadeUp 0.7s ease both;
   }
   .mark svg {
-    width: 60px; height: 60px;
+    width: 56px; height: 56px;
     animation: glowPulse 4s ease-in-out infinite;
   }
   @keyframes glowPulse {
-    0%,100% { filter: drop-shadow(0 0 12px rgba(221,0,49,0.35)); }
-    50%      { filter: drop-shadow(0 0 28px rgba(221,0,49,0.65)); }
+    0%,100% { filter: drop-shadow(0 0 10px rgba(221,0,49,0.3)); }
+    50%      { filter: drop-shadow(0 0 24px rgba(221,0,49,0.6)); }
   }
 
+  /* center wrapper */
   .center {
-    position: relative;
-    z-index: 1;
+    position: relative; z-index: 1;
     text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: flex; flex-direction: column; align-items: center;
     padding: 5rem 1.5rem 6rem;
-    max-width: 620px;
-    width: 100%;
+    max-width: 600px; width: 100%;
   }
 
   .handle {
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     letter-spacing: 0.2em;
     color: var(--muted);
     text-transform: uppercase;
     margin-bottom: 1.4rem;
-    animation: fadeUp 0.6s 0.08s ease both;
-    opacity: 0;
+    animation: fadeUp 0.6s 0.06s ease both; opacity: 0;
   }
 
-  /* "i'm" label */
   .im {
     font-family: 'DM Serif Display', serif;
     font-style: italic;
-    font-size: clamp(0.95rem, 2.5vw, 1.3rem);
+    font-size: clamp(0.9rem, 2.2vw, 1.2rem);
     color: var(--muted);
-    letter-spacing: 0.04em;
-    margin-bottom: 0.2rem;
-    animation: fadeUp 0.6s 0.13s ease both;
-    opacity: 0;
+    margin-bottom: 0.15rem;
+    animation: fadeUp 0.6s 0.12s ease both; opacity: 0;
   }
 
   .big-name {
     font-family: 'DM Serif Display', serif;
     font-size: clamp(2rem, 7vw, 4.2rem);
-    font-weight: 400;
-    line-height: 1;
+    font-weight: 400; line-height: 1;
     letter-spacing: -0.03em;
-    margin-bottom: 0.3rem;
-    animation: fadeUp 0.6s 0.18s ease both;
-    opacity: 0;
+    margin-bottom: 0.25rem;
     color: var(--text);
+    animation: fadeUp 0.6s 0.17s ease both; opacity: 0;
   }
 
   .big-name-last {
     font-family: 'DM Serif Display', serif;
-    font-size: clamp(1.4rem, 4.5vw, 2.6rem);
-    font-weight: 400;
-    font-style: italic;
+    font-size: clamp(1.3rem, 4.5vw, 2.5rem);
+    font-weight: 400; font-style: italic;
     color: var(--red);
     letter-spacing: -0.02em;
-    margin-bottom: 1.8rem;
-    animation: fadeUp 0.6s 0.22s ease both;
-    opacity: 0;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.6s 0.22s ease both; opacity: 0;
   }
 
-  /* chaicode badge */
-  .chai-badge {
+  /* status pill */
+  .status-pill {
     display: inline-flex;
     align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.4rem;
-    border: 1px solid #1e1e2e;
-    border-radius: 10px;
-    padding: 0.65rem 1.1rem;
-    margin-bottom: 2rem;
+    gap: 0.5rem;
+    border: 1px solid #1a1a28;
+    border-radius: 999px;
+    padding: 0.4rem 0.95rem;
+    margin-bottom: 2.2rem;
     background: var(--card);
     font-size: 0.68rem;
-    letter-spacing: 0.04em;
-    color: var(--muted);
-    animation: fadeUp 0.6s 0.28s ease both;
-    opacity: 0;
-    line-height: 1.7;
-    text-align: center;
-    text-decoration: none;
-    transition: border-color 0.2s;
-  }
-  .chai-badge:hover { border-color: #f97316; }
-  .chai-top {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.4rem;
-    margin-bottom: 0.2rem;
-  }
-  .chai-name {
-    color: #f97316;
-    font-weight: 500;
     letter-spacing: 0.06em;
+    color: var(--muted);
+    animation: fadeUp 0.6s 0.28s ease both; opacity: 0;
   }
-  .chai-divider {
-    width: 100%;
-    height: 1px;
-    background: var(--border);
-    margin: 0.3rem 0;
+  .status-pill .dot-green {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 6px var(--green);
+    animation: blink 2.5s ease-in-out infinite;
+    flex-shrink: 0;
   }
-  .chai-bottom {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.3rem;
-    flex-wrap: wrap;
-  }
-  .chai-bottom a {
-    color: #9b98b8;
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .chai-bottom a:hover { color: var(--text); }
+  .status-pill strong { color: var(--green); font-weight: 400; }
 
+  /* bio */
   .bio {
-    font-size: 0.8rem;
-    line-height: 1.9;
+    font-size: 0.82rem;
+    line-height: 2;
     color: var(--muted);
     letter-spacing: 0.02em;
-    margin-bottom: 2.8rem;
-    animation: fadeUp 0.6s 0.34s ease both;
-    opacity: 0;
+    margin-bottom: 2.4rem;
+    animation: fadeUp 0.6s 0.34s ease both; opacity: 0;
   }
-  .bio strong { color: #9b98b8; font-weight: 400; }
+  .bio .highlight { color: #a8a4c8; }
+  .bio .accent    { color: var(--red); opacity: 0.85; }
+
+  /* traits row */
+  .traits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 2.4rem;
+    animation: fadeUp 0.6s 0.4s ease both; opacity: 0;
+  }
+  .trait {
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    border-radius: 999px;
+    padding: 0.32rem 0.85rem;
+    background: var(--card);
+    border: 1px solid #22212e;
+    color: #6e6b88;
+    font-weight: 400;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .trait:hover { border-color: var(--red); color: var(--text); }
 
   /* npm chip */
   .package {
@@ -208,13 +188,12 @@
     border: 1px solid var(--border);
     border-radius: 8px;
     padding: 0.6rem 1.1rem;
-    margin-bottom: 2.8rem;
+    margin-bottom: 2.6rem;
     background: var(--card);
-    font-size: 0.73rem;
+    font-size: 0.72rem;
     letter-spacing: 0.04em;
     color: var(--muted);
-    animation: fadeUp 0.6s 0.40s ease both;
-    opacity: 0;
+    animation: fadeUp 0.6s 0.46s ease both; opacity: 0;
     text-decoration: none;
     transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
   }
@@ -224,49 +203,50 @@
     box-shadow: 0 0 16px rgba(221,0,49,0.12);
   }
   .pkg-label {
-    font-size: 0.6rem;
+    font-size: 0.58rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--red);
     border: 1px solid rgba(221,0,49,0.3);
     border-radius: 4px;
-    padding: 0.15rem 0.4rem;
+    padding: 0.12rem 0.4rem;
   }
 
-  .status {
+  /* coming soon */
+  .coming {
     display: flex;
     align-items: center;
-    gap: 0.65rem;
-    margin-bottom: 2.8rem;
-    animation: fadeUp 0.6s 0.46s ease both;
-    opacity: 0;
+    gap: 0.6rem;
+    margin-bottom: 2.6rem;
+    animation: fadeUp 0.6s 0.52s ease both; opacity: 0;
   }
-  .dot {
-    width: 7px; height: 7px;
-    border-radius: 50%;
+  .dot-red {
+    width: 7px; height: 7px; border-radius: 50%;
     background: var(--red);
     box-shadow: 0 0 8px var(--red);
     animation: blink 2s ease-in-out infinite;
     flex-shrink: 0;
   }
-  @keyframes blink {
-    0%,100% { opacity:1; box-shadow:0 0 8px var(--red); }
-    50%      { opacity:0.2; box-shadow:none; }
+  .coming-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(0.95rem, 3vw, 1.5rem);
+    font-weight: 400;
+    color: #2e2c42;
+    letter-spacing: -0.01em;
   }
-  .status-text {
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
-    color: var(--dim);
-    text-transform: uppercase;
+  .coming-text em { font-style: italic; color: var(--red); opacity: 0.75; }
+
+  @keyframes blink {
+    0%,100% { opacity:1; } 50% { opacity:0.15; }
   }
 
+  /* socials */
   .socials {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.9rem;
+    gap: 0.8rem;
     justify-content: center;
-    animation: fadeUp 0.6s 0.52s ease both;
-    opacity: 0;
+    animation: fadeUp 0.6s 0.58s ease both; opacity: 0;
   }
   .soc {
     width: 44px; height: 44px;
@@ -285,19 +265,6 @@
   .soc svg { fill: var(--muted); transition: fill 0.2s; }
   .soc:hover svg { fill: var(--text); }
 
-  h4 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(1rem, 3.5vw, 2rem);
-    font-weight: 400;
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-    margin-block: 1.8rem;
-    color: #3a3852;
-    animation: fadeUp 0.6s 0.58s ease both;
-    opacity: 0;
-  }
-  h4 em { font-style: italic; color: var(--red); opacity: 0.7; }
-
   @keyframes fadeUp {
     from { opacity:0; transform:translateY(14px); }
     to   { opacity:1; transform:translateY(0); }
@@ -305,9 +272,9 @@
 
   .footer {
     position: fixed; bottom: 1.4rem;
-    font-size: 0.62rem;
+    font-size: 0.6rem;
     letter-spacing: 0.08em;
-    color: #1e1c2a;
+    color: #18161f;
     z-index: 1;
   }
 </style>
@@ -319,6 +286,7 @@
 
 <div class="center">
 
+  <!-- abstract mark -->
   <div class="mark">
     <svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="40" cy="40" r="36" stroke="#dd0031" stroke-width="1" stroke-dasharray="4 8" stroke-linecap="round" opacity="0.4"/>
@@ -343,20 +311,34 @@
   <div class="big-name">Subhrangsu</div>
   <div class="big-name-last">Bera</div>
 
+  <div class="status-pill">
+    <span class="dot-green"></span>
+    levelling up → <strong>Full Stack</strong>
+  </div>
+
   <p class="bio">
-    a frontend developer from Kolkata.<br>
-    i build precise, performant apps with <strong>Angular</strong> and love<br>
-    turning complex ideas into clean real-world experiences.
+    i obsess over <span class="highlight">pixels, performance & clean code.</span><br>
+    by day — crafting <span class="accent">Angular</span> apps that actually scale.<br>
+    by night — learning the full stack, one commit at a time.
   </p>
+
+  <div class="traits">
+    <span class="trait">Angular</span>
+    <span class="trait">TypeScript</span>
+    <span class="trait">RxJS</span>
+    <span class="trait">Node.js ↗</span>
+    <span class="trait">Micro Frontends</span>
+    <span class="trait">Open Source</span>
+  </div>
 
   <a class="package" href="https://www.npmjs.com/package/@brewcodex/chai-css" target="_blank">
     <span class="pkg-label">npm</span>
     npm i @brewcodex/chai-css &nbsp;→
   </a>
 
-  <div class="status">
-    <span class="dot"></span>
-    <span class="status-text">Portfolio under construction</span>
+  <div class="coming">
+    <span class="dot-red"></span>
+    <span class="coming-text">something <em>big</em> is being built.</span>
   </div>
 
   <div class="socials">
@@ -375,12 +357,10 @@
     <a class="soc" href="https://blog.subhrangsu.in" target="_blank" title="Blog">
       <svg width="17" height="17" viewBox="0 0 24 24"><path d="M22.351 8.019l-6.37-6.37a5.63 5.63 0 00-7.962 0l-6.37 6.37a5.63 5.63 0 000 7.962l6.37 6.37a5.63 5.63 0 007.962 0l6.37-6.37a5.63 5.63 0 000-7.962zM12 15.953a3.953 3.953 0 110-7.906 3.953 3.953 0 010 7.906z"/></svg>
     </a>
-    <a class="soc" href="mailto:subhrangsubera@gmail.com" title="Email">
+    <a class="soc" href="/cdn-cgi/l/email-protection#d9aaacbbb1abb8b7beaaacbbbcabb899beb4b8b0b5f7bab6b4" title="Email">
       <svg width="16" height="16" viewBox="0 0 24 24"><path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 010 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg>
     </a>
   </div>
-
-  <h4>Something <em>big</em> is coming.</h4>
 
 </div>
 
